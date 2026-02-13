@@ -166,11 +166,19 @@ secondPage.style.display="flex";
 
 // NO BUTTON RUNS AWAY (never clickable)
 noBtn.addEventListener("mouseover", function(){
-let x = Math.random() * (window.innerWidth - 100);
-let y = Math.random() * (window.innerHeight - 50);
-this.style.position="fixed";
-this.style.left = x + "px";
-this.style.top = y + "px";
+
+    const buttonWidth = this.offsetWidth;
+    const buttonHeight = this.offsetHeight;
+
+    const maxX = window.innerWidth - buttonWidth;
+    const maxY = window.innerHeight - buttonHeight;
+
+    const randomX = Math.floor(Math.random() * maxX);
+    const randomY = Math.floor(Math.random() * maxY);
+
+    this.style.position = "fixed";
+    this.style.left = randomX + "px";
+    this.style.top = randomY + "px";
 });
 
 // Falling Hearts
@@ -188,4 +196,5 @@ setInterval(createHeart,300);
 </script>
 
 </body>
+
 </html>
